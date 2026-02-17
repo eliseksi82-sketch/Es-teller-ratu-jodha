@@ -14,7 +14,7 @@ text-align:center;
 padding:30px;
 }
 h1{color:gold}
-select,input,textarea{
+select,input{
 width:90%;
 max-width:400px;
 padding:12px;
@@ -58,7 +58,7 @@ margin-top:10px;
 <body>
 
 <h1>🥤 PROMO ES TELLER CREAMY SEGAR HAPPY RATU JODHA SHINTA</h1>
-<h2 style="color:gold">BELI 4 GRATIS 1 ES TEH🎉</h2>
+<h2 style="color:gold">BELI 4 GRATIS 1 ES TEH 🎉</h2>
 
 <input id="nama" placeholder="Nama Anda">
 
@@ -84,11 +84,6 @@ MANDIRI 1420021351449<br>
 a.n SHINTA DEWI RATNASARI
 </div>
 
-<!-- ALAMAT COD -->
-<div id="alamatBox" class="hidden">
-<textarea id="alamat" placeholder="Alamat Lengkap (untuk COD)"></textarea>
-</div>
-
 <button onclick="hitung()">Hitung Total</button>
 
 <div class="box" id="hasil"></div>
@@ -98,33 +93,21 @@ a.n SHINTA DEWI RATNASARI
 function toggleMetode(){
 let metode=document.getElementById("metode").value;
 document.getElementById("rekeningBox").classList.add("hidden");
-document.getElementById("alamatBox").classList.add("hidden");
 
 if(metode=="Transfer"){
 document.getElementById("rekeningBox").classList.remove("hidden");
-}
-if(metode=="COD"){
-document.getElementById("alamatBox").classList.remove("hidden");
 }
 }
 
 function hitung(){
 
 let nama=document.getElementById("nama").value;
-let kota=document.getElementById("kota").value;
-let wa=document.getElementById("wa").value;
 let harga=parseInt(document.getElementById("produk").value);
 let jumlah=parseInt(document.getElementById("jumlah").value);
 let metode=document.getElementById("metode").value;
-let alamat=document.getElementById("alamat").value;
 
-if(!nama||!kota||!wa||!jumlah||!metode){
+if(!nama||!jumlah||!metode){
 alert("Lengkapi data dulu");
-return;
-}
-
-if(metode=="COD" && !alamat){
-alert("Isi alamat lengkap untuk COD");
 return;
 }
 
@@ -154,24 +137,20 @@ Konfirmasi via WhatsApp
 function kirimWA(total,gratis,status){
 
 let nama=document.getElementById("nama").value;
-let kota=document.getElementById("kota").value;
 let jumlah=document.getElementById("jumlah").value;
 let metode=document.getElementById("metode").value;
-let alamat=document.getElementById("alamat").value;
 let produk=document.getElementById("produk").options[
 document.getElementById("produk").selectedIndex].text;
 
 let text=encodeURIComponent(
 "Halo Admin, saya "+nama+
-"\nKota: "+kota+
 "\n\nPesan:\n"+produk+
 "\nJumlah: "+jumlah+
 "\nGratis: "+gratis+
 "\nTotal Produk: Rp "+total.toLocaleString()+
 "\nOngkir: Konfirmasi admin"+
 "\nMetode: "+metode+
-"\nStatus: "+status+
-(metode=="COD" ? "\nAlamat:\n"+alamat : "")
+"\nStatus: "+status
 );
 
 window.open("https://wa.me/6287743228938?text="+text,"_blank");
