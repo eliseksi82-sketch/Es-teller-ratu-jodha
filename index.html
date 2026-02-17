@@ -5,303 +5,283 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FRANCHISE NASIONAL ULTIMATE | ES TELER CREAMY RATU JODHA SHINTA</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-
 body{
 font-family:'Poppins',sans-serif;
+background:#000;
 color:#fff;
-background:black;
 overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
-/* VIDEO BACKGROUND */
-.video-bg{
+/* Luxury Glow Background */
+body::before{
+content:"";
 position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-object-fit:cover;
-z-index:-2;
-}
-
-.overlay{
-position:fixed;
-width:100%;height:100%;
-background:linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.95));
+width:900px;height:900px;
+background:radial-gradient(circle,#FFD70033,transparent 70%);
+top:-300px;left:-300px;
 z-index:-1;
+animation:floatGlow 10s infinite alternate;
+}
+@keyframes floatGlow{
+0%{transform:translate(0,0);}
+100%{transform:translate(250px,250px);}
 }
 
-/* GOLD TEXT */
+/* Section Animation */
+.section{
+max-width:1100px;
+margin:auto;
+padding:100px 20px;
+text-align:center;
+opacity:0;
+transform:translateY(40px);
+transition:1s ease;
+}
+.section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* Gold Effect */
 .gold{
 font-family:'Playfair Display',serif;
 background:linear-gradient(90deg,#FFD700,#fff8dc,#FFD700);
-background-size:400%;
+background-size:300%;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:shimmer 6s linear infinite;
+animation:shimmer 5s linear infinite;
 }
-
 @keyframes shimmer{
-0%{background-position:-500px 0;}
-100%{background-position:500px 0;}
+0%{background-position:-200px;}
+100%{background-position:200px;}
 }
 
-/* SECTION */
-.section{
-max-width:1000px;
-margin:auto;
-padding:80px 20px;
-text-align:center;
-}
-
-/* HERO */
-.hero h1{
-font-size:48px;
-margin-bottom:20px;
-}
-
-.hero p{
-font-size:18px;
-opacity:0.85;
-}
-
-/* PACKAGE CARD */
-.packages{
-display:flex;
-flex-wrap:wrap;
-gap:30px;
-justify-content:center;
-margin-top:50px;
-}
-
-.card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,215,0,0.6);
-border-radius:30px;
-padding:40px;
-width:300px;
-backdrop-filter:blur(20px);
-transition:0.4s;
-}
-
-.card:hover{
-transform:translateY(-12px);
-box-shadow:0 0 40px gold;
-}
-
-.card h3{
-font-family:'Playfair Display',serif;
-color:#FFD700;
-margin-bottom:15px;
-}
-
-.price{
-font-size:22px;
-color:#FFD700;
-margin:10px 0;
-}
-
-/* BUTTON */
+/* Button */
 .btn{
 display:inline-block;
 padding:15px 40px;
 background:linear-gradient(90deg,#FFD700,#C9A227);
 color:black;
-text-decoration:none;
 border-radius:50px;
-margin-top:20px;
+margin-top:25px;
 font-weight:bold;
+text-decoration:none;
 transition:0.3s;
-border:none;
 cursor:pointer;
 }
-
 .btn:hover{
 transform:scale(1.1);
-box-shadow:0 0 35px gold;
+box-shadow:0 0 30px gold;
 }
 
-/* FORM */
-.form-section{
-margin-top:80px;
-padding:50px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,215,0,0.6);
+/* Slot Counter */
+.slot{
+margin-top:15px;
+color:#FFD700;
+font-weight:bold;
+}
+
+/* Growth Bar */
+.growth{
+margin-top:40px;
+background:#222;
 border-radius:30px;
+overflow:hidden;
+}
+.growth-bar{
+height:25px;
+width:0%;
+background:linear-gradient(90deg,gold,#C9A227);
+transition:2s;
 }
 
-.form-section input,
-.form-section select{
+/* Simulator */
+.simulator input{
 width:100%;
 padding:15px;
-margin:12px 0;
+margin:15px 0;
 border-radius:15px;
 border:none;
-outline:none;
+}
+.result{
+margin-top:20px;
+color:#FFD700;
+font-size:20px;
+font-weight:bold;
 }
 
-/* FOOTER */
+/* Popup */
+.popup{
+position:fixed;
+bottom:30px;
+right:30px;
+background:#111;
+border:1px solid gold;
+padding:20px;
+border-radius:20px;
+display:none;
+box-shadow:0 0 30px gold;
+z-index:9999;
+max-width:280px;
+}
+
+/* Live Notification */
+.liveNotif{
+position:fixed;
+top:20px;
+left:20px;
+background:#111;
+border:1px solid gold;
+padding:15px 20px;
+border-radius:15px;
+display:none;
+box-shadow:0 0 20px gold;
+z-index:9999;
+font-size:14px;
+}
+
+/* Footer */
 footer{
-text-align:center;
-padding:40px;
-border-top:1px solid rgba(255,215,0,0.5);
 margin-top:100px;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-.packages{flex-direction:column;align-items:center;}
-.hero h1{font-size:34px;}
+padding:50px;
+border-top:1px solid rgba(255,215,0,0.4);
+opacity:0.7;
 }
 </style>
 </head>
 
 <body>
-<div class="overlay"></div>
 
 <section class="section hero">
 <h1 class="gold">👑 FRANCHISE NASIONAL ULTIMATE 👑</h1>
-<h2 class="gold" style="font-size:28px;margin-top:15px;">
-ES TELER CREAMY RATU JODHA SHINTA
-</h2>
-<p style="margin-top:25px;">
-Bangun Bisnis Minuman Premium Bersama Brand Ratu Jodha Shinta  
-Dengan Sistem Teruji & Dukungan Nasional
+<h2 class="gold">ES TELER CREAMY RATU JODHA SHINTA</h2>
+
+<div style="margin-top:20px;font-size:20px;color:#FFD700;">
+⏳ Promo Berakhir Dalam: <span id="timer"></span>
+</div>
+
+<div class="slot">
+📍 Sisa Slot Kota Anda: <span id="slotCounter"></span>
+</div>
+
+<a href="#simulator" class="btn">Hitung Potensi Profit</a>
+
+<div class="growth">
+<div class="growth-bar" id="growthBar"></div>
+</div>
+
+<p style="margin-top:10px;font-size:14px;">
+🏆 Official National Brand • Target 100+ Kota
 </p>
-<a class="btn" href="#daftar">Gabung Sekarang</a>
 </section>
 
-<section class="section">
-<h2 class="gold">💎 Paket Kemitraan Franchise 💎</h2>
-<div class="packages">
+<section class="section simulator" id="simulator">
+<h2 class="gold">💰 Simulasi Estimasi Profit</h2>
 
-<div class="card">
-<h3>PAKET SILVER</h3>
-<p class="price">Investasi 3 Juta</p>
-<p>✔ Booth Standard<br>✔ Bahan Awal 100 Cup<br>✔ Banner & Branding<br>✔ Training Online</p>
-</div>
+<input type="number" id="cup" placeholder="Penjualan per Hari (Cup)">
+<input type="number" id="harga" placeholder="Harga Jual per Cup (Rp)">
+<button class="btn" onclick="hitungProfit()">Hitung & Kirim ke WhatsApp</button>
 
-<div class="card">
-<h3>PAKET GOLD</h3>
-<p class="price">Investasi 6 Juta</p>
-<p>✔ Booth Premium<br>✔ Bahan Awal 250 Cup<br>✔ Free Marketing Kit<br>✔ Training + Support</p>
-</div>
-
-<div class="card">
-<h3>PAKET ROYAL</h3>
-<p class="price">Investasi 10 Juta</p>
-<p>✔ Booth Luxury Custom<br>✔ Bahan Awal 500 Cup<br>✔ Full Branding Nasional<br>✔ Prioritas Wilayah</p>
-</div>
-
-</div>
+<div class="result" id="hasil"></div>
 </section>
 
-<section id="daftar" class="section form-section">
-<h2 class="gold">📝 Daftar Franchise Sekarang</h2>
-
-<input type="text" id="nama" placeholder="Nama Lengkap">
-<input type="text" id="wa" placeholder="Nomor WhatsApp (08xxxx)">
-<input type="text" id="kota" placeholder="Kota / Provinsi">
-
-<select id="paket">
-<option value="">-- Pilih Paket Franchise --</option>
-<option value="PAKET SILVER - Investasi 3 Juta">PAKET SILVER - 3 Juta</option>
-<option value="PAKET GOLD - Investasi 6 Juta">PAKET GOLD - 6 Juta</option>
-<option value="PAKET ROYAL - Investasi 10 Juta">PAKET ROYAL - 10 Juta</option>
-</select>
-
-<button class="btn" onclick="kirimData()">Kirim Pendaftaran</button>
-<p id="notif" style="display:none;margin-top:15px;color:#FFD700;">🚀 Mengarahkan ke WhatsApp...</p>
-
+<section class="section" style="text-align:left;max-width:900px;">
+<h2 class="gold" style="text-align:center;">📊 Investor Overview</h2>
+<p><strong style="color:#FFD700;">✔ Market:</strong> Industri minuman terus tumbuh nasional.</p>
+<p><strong style="color:#FFD700;">✔ Margin:</strong> 55%–65%.</p>
+<p><strong style="color:#FFD700;">✔ BEP:</strong> 2–4 bulan.</p>
+<p><strong style="color:#FFD700;">✔ Ekspansi:</strong> Target 100+ Kota.</p>
 </section>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>YouTube Shorts Autoplay Mobile</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body style="margin:0; background:black; display:flex; justify-content:center; align-items:center; height:100vh;">
+<div class="popup" id="popupUrgency">
+<strong style="color:#FFD700;">🔥 Slot Hampir Habis!</strong>
+<p style="margin-top:10px;">Beberapa kota sudah full. Amankan sekarang.</p>
+<button class="btn" onclick="tutupPopup()">Tutup</button>
+</div>
 
-  <div id="player"></div>
+<div class="liveNotif" id="liveNotif"></div>
 
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-    var player;
-    var started = false;
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        height: '560',
-        width: '315',
-        videoId: 'LcjH61sfzJo',
-        playerVars: {
-          autoplay: 0,
-          mute: 1,
-          playsinline: 1,
-          controls: 0
-        }
-      });
-    }
-
-    // Autoplay setelah user tap pertama
-    document.body.addEventListener("click", function () {
-      if (!started && player) {
-        player.playVideo();
-        started = true;
-      }
-    });
-  </script>
-
-</body>
-</html>
 <footer>
-© 2026 RATU JODHA SHINTA 
-ES TELER CREAMY RATU JODHA SHINTA  
+© 2026 RATU JODHA SHINTA  
 National Brand • Premium System • Royal Standard
 </footer>
 
 <script>
-function kirimData(){
-
-var nama=document.getElementById("nama").value.trim();
-var wa=document.getElementById("wa").value.trim();
-var kota=document.getElementById("kota").value.trim();
-var paket=document.getElementById("paket").value;
-var notif=document.getElementById("notif");
-
-if(nama==""||wa==""||kota==""||paket==""){
-alert("Mohon lengkapi semua data.");
-return;
+/* Scroll Animation */
+const sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+sections.forEach(sec=>{
+if(sec.getBoundingClientRect().top<window.innerHeight-100){
+sec.classList.add('show');
 }
+});
+});
 
-if(!/^[0-9]+$/.test(wa)){
-alert("Nomor WhatsApp hanya boleh angka.");
-return;
-}
-
-if(wa.startsWith("08")){
-wa="62"+wa.substring(1);
-}
-
-notif.style.display="block";
-
-var pesan=
-"Halo Admin Royal Empire,%0A%0A"+
-"Saya ingin mendaftar Franchise Nasional Ultimate.%0A%0A"+
-"Nama: "+nama+"%0A"+
-"No WA: "+wa+"%0A"+
-"Kota: "+kota+"%0A"+
-"Paket: "+paket+"%0A%0A"+
-"Mohon info selanjutnya 🙏";
-
-setTimeout(function(){
-window.open("https://wa.me/6287743228938?text="+pesan,"_blank");
-notif.style.display="none";
+/* Countdown 48 Jam */
+var countDownDate=new Date().getTime()+48*60*60*1000;
+setInterval(function(){
+var now=new Date().getTime();
+var distance=countDownDate-now;
+var h=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var m=Math.floor((distance%(1000*60*60))/(1000*60));
+var s=Math.floor((distance%(1000*60))/1000);
+document.getElementById("timer").innerHTML=h+"j "+m+"m "+s+"d";
 },1000);
 
+/* Slot Counter */
+var slot=Math.floor(Math.random()*3)+1;
+document.getElementById("slotCounter").innerHTML=slot+" Slot";
+
+/* Growth Bar */
+setTimeout(()=>{document.getElementById("growthBar").style.width="75%";},1000);
+
+/* Popup Urgency */
+function tampilPopup(){document.getElementById("popupUrgency").style.display="block";}
+function tutupPopup(){document.getElementById("popupUrgency").style.display="none";}
+setInterval(tampilPopup,20000);
+
+/* Fake Live Notification */
+var names=["Budi","Sari","Rizky","Dewi","Andi","Putri"];
+var cities=["Jakarta","Bandung","Surabaya","Medan","Makassar"];
+setInterval(function(){
+var notif=document.getElementById("liveNotif");
+notif.innerHTML="🔥 "+names[Math.floor(Math.random()*names.length)]+" dari "+cities[Math.floor(Math.random()*cities.length)]+" baru mendaftar!";
+notif.style.display="block";
+setTimeout(()=>{notif.style.display="none";},5000);
+},15000);
+
+/* Profit Simulator + WA Redirect */
+function hitungProfit(){
+var cup=document.getElementById("cup").value;
+var harga=document.getElementById("harga").value;
+if(cup==""||harga==""){alert("Isi data dulu.");return;}
+var omzet=cup*harga;
+var profit=omzet*0.6;
+var omzetBulanan=omzet*30;
+var profitBulanan=profit*30;
+
+document.getElementById("hasil").innerHTML=
+"Omzet/Bulan: Rp "+omzetBulanan.toLocaleString()+"<br>"+
+"Profit/Bulan: Rp "+profitBulanan.toLocaleString();
+
+setTimeout(function(){
+var pesan=
+"Halo Admin,%0A%0A"+
+"Saya tertarik Franchise Ratu Jodha Shinta.%0A%0A"+
+"Simulasi:%0A"+
+"Penjualan/Hari: "+cup+" cup%0A"+
+"Harga: Rp "+harga+"%0A"+
+"Omzet/Bulan: Rp "+omzetBulanan.toLocaleString()+"%0A"+
+"Profit/Bulan: Rp "+profitBulanan.toLocaleString()+"%0A%0A"+
+"Mohon info selanjutnya.";
+
+window.open("https://wa.me/6287743228938?text="+pesan,"_blank");
+},3000);
 }
 </script>
 
