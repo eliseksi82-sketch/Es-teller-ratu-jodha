@@ -3,20 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Franchise Closer Elite</title>
-
-<!-- FACEBOOK PIXEL -->
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}
-(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','YOUR_PIXEL_ID');
-fbq('track','PageView');
-</script>
+<title>Promo Es Teh Beli 4 Gratis 1</title>
 
 <style>
 body{
@@ -24,10 +11,10 @@ background:#000;
 color:#fff;
 font-family:Arial;
 text-align:center;
-padding:40px;
+padding:30px;
 }
 h1{color:gold}
-input{
+select,input,textarea{
 width:90%;
 max-width:400px;
 padding:12px;
@@ -41,8 +28,9 @@ background:gold;
 border:none;
 cursor:pointer;
 border-radius:20px;
+font-weight:bold;
 }
-.chatbox{
+.box{
 margin-top:20px;
 padding:20px;
 background:#111;
@@ -50,122 +38,153 @@ border:1px solid gold;
 border-radius:20px;
 display:none;
 }
-.timer{color:gold;font-size:18px;margin-bottom:20px}
-.hot{color:red;font-weight:bold}
+.total{color:lime;font-size:20px;font-weight:bold}
+.hidden{display:none;}
+.rek-box{
+background:#222;
+padding:10px;
+border-radius:15px;
+margin-top:10px;
+color:gold;
+}
 </style>
 </head>
 
 <body>
 
-<h1>🤖 AI Franchise es teller creamy ratu jodha shinta</h1>
-<div class="timer">⏳ Promo Berakhir Dalam: <span id="timer"></span></div>
+<h1>🥤 PROMO ES TEH</h1>
+<h2 style="color:gold">BELI 4 GRATIS 1 🎉</h2>
 
 <input id="nama" placeholder="Nama Anda">
 <input id="kota" placeholder="Kota Anda">
 <input id="wa" placeholder="Nomor WhatsApp">
-<input id="pesan" placeholder="Tulis pertanyaan Anda...">
 
-<button onclick="proses()">Kirim ke AI</button>
+<select id="produk">
+<option value="5000">Cup Reguler - Rp 5.000</option>
+<option value="8000">Cup Jumbo - Rp 8.000</option>
+<option value="12000">Reguler + Toping Durian - Rp 12.000</option>
+<option value="8000">Jumbo + Toping Durian - Rp 8.000</option>
+</select>
 
-<div class="chatbox" id="chatbox"></div>
+<input type="number" id="jumlah" placeholder="Jumlah Cup" min="1">
+
+<select id="metode" onchange="toggleMetode()">
+<option value="">Pilih Metode Pembayaran</option>
+<option value="Transfer">Transfer Bank</option>
+<option value="COD">COD (Bayar di Tempat)</option>
+</select>
+
+<!-- REKENING -->
+<div id="rekeningBox" class="hidden rek-box">
+Transfer ke:<br>
+BCA 1234567890<br>
+a.n ES TEH PREMIUM
+</div>
+
+<!-- ALAMAT COD -->
+<div id="alamatBox" class="hidden">
+<textarea id="alamat" placeholder="Alamat Lengkap (untuk COD)"></textarea>
+</div>
+
+<button onclick="hitung()">Hitung Total</button>
+
+<div class="box" id="hasil"></div>
 
 <script>
 
-/* COUNTDOWN UNIK PER VISITOR */
-if(!localStorage.getItem("endTime")){
-localStorage.setItem("endTime", Date.now()+48*60*60*1000);
+/* TOGGLE METODE */
+function toggleMetode(){
+let metode=document.getElementById("metode").value;
+document.getElementById("rekeningBox").classList.add("hidden");
+document.getElementById("alamatBox").classList.add("hidden");
+
+if(metode=="Transfer"){
+document.getElementById("rekeningBox").classList.remove("hidden");
 }
-setInterval(()=>{
-let sisa=localStorage.getItem("endTime")-Date.now();
-let h=Math.floor(sisa/1000/60/60);
-let m=Math.floor((sisa/1000/60)%60);
-let s=Math.floor((sisa/1000)%60);
-document.getElementById("timer").innerHTML=h+"j "+m+"m "+s+"d";
-},1000);
-
-/* AI PSIKOLOGIS */
-function generateAI(message,kota){
-
-message=message.toLowerCase();
-let score=0;
-let reply="";
-
-if(message.includes("harga")||message.includes("mahal")){
-score+=25;
-reply="Saya paham pertanyaan soal harga 👍\n\nJustru yang penting itu ROI. Rata-rata mitra BEP 2-4 bulan.\nKalau dihitung per hari, modalnya bahkan lebih kecil dari biaya nongkrong kopi premium.";
+if(metode=="COD"){
+document.getElementById("alamatBox").classList.remove("hidden");
+}
 }
 
-else if(message.includes("takut")||message.includes("ragu")){
-score+=20;
-reply="Wajar kalau ada rasa khawatir 😊\n\nKarena itu sistem kami sudah teruji di banyak kota.\nBahkan beberapa mitra di kota setara "+kota+" sudah profit stabil.";
+/* HITUNG ONGKIR OTOMATIS */
+function hitungOngkir(kota){
+kota=kota.toLowerCase();
+if(kota.includes("jakarta")) return 10000;
+if(kota.includes("bekasi")) return 15000;
+if(kota.includes("bandung")) return 20000;
+return 25000; // kota lain
 }
 
-else if(message.includes("lokasi")){
-score+=20;
-reply="Untuk kota "+kota+", slot sudah hampir penuh.\nKami memang batasi agar tidak saling makan pasar.";
-}
-
-else if(message.includes("deal")||message.includes("gas")||message.includes("ambil")){
-score+=50;
-reply="🔥 Siap! Keputusan yang cerdas.\n\nUntuk amankan slot kota "+kota+", Anda bisa langsung DP melalui link berikut:\nhttps://payment-link";
-}
-
-else{
-reply="Terima kasih sudah menghubungi kami 😊\n\nBoleh saya tahu, yang paling ingin Anda ketahui tentang franchise ini apa?";
-}
-
-if(score>=60){
-reply+="\n\n🔥 Status Anda: HOT LEAD";
-document.getElementById("chatbox").classList.add("hot");
-}
-
-return reply;
-}
-
-function typingEffect(text){
-let box=document.getElementById("chatbox");
-box.style.display="block";
-box.innerHTML="";
-let i=0;
-let interval=setInterval(()=>{
-box.innerHTML+=text.charAt(i);
-i++;
-if(i>=text.length) clearInterval(interval);
-},25);
-}
-
-/* PROSES */
-function proses(){
+function hitung(){
 
 let nama=document.getElementById("nama").value;
 let kota=document.getElementById("kota").value;
 let wa=document.getElementById("wa").value;
-let pesan=document.getElementById("pesan").value;
+let harga=parseInt(document.getElementById("produk").value);
+let jumlah=parseInt(document.getElementById("jumlah").value);
+let metode=document.getElementById("metode").value;
+let alamat=document.getElementById("alamat").value;
 
-if(!nama||!kota||!wa||!pesan){
+if(!nama||!kota||!wa||!jumlah||!metode){
 alert("Lengkapi data dulu");
 return;
 }
 
-fbq('track','Lead');
+if(metode=="COD" && !alamat){
+alert("Isi alamat lengkap untuk COD");
+return;
+}
 
-let reply=generateAI(pesan,kota);
+/* PROMO */
+let gratis=Math.floor(jumlah/4);
+let subtotal=harga*jumlah;
+let ongkir=hitungOngkir(kota);
+let total=subtotal+ongkir;
 
-typingEffect("🤖 AI sedang mengetik...\n\n");
+/* STATUS OTOMATIS */
+let status = metode=="Transfer" ? "Menunggu Transfer" : "Siap Dikirim";
 
-setTimeout(()=>{
-typingEffect(reply);
+let box=document.getElementById("hasil");
+box.style.display="block";
+box.innerHTML=`
+<p>Jumlah: ${jumlah} Cup</p>
+<p>Gratis: ${gratis} Cup 🎉</p>
+<p>Subtotal: Rp ${subtotal.toLocaleString()}</p>
+<p>Ongkir: Rp ${ongkir.toLocaleString()}</p>
+<p class="total">Total Bayar: Rp ${total.toLocaleString()}</p>
+<p>Status Pesanan: <b>${status}</b></p>
 
-setTimeout(()=>{
+<button onclick="kirimWA(${total},${gratis},'${status}',${ongkir})">
+Konfirmasi via WhatsApp
+</button>
+`;
+
+}
+
+function kirimWA(total,gratis,status,ongkir){
+
+let nama=document.getElementById("nama").value;
+let kota=document.getElementById("kota").value;
+let jumlah=document.getElementById("jumlah").value;
+let metode=document.getElementById("metode").value;
+let alamat=document.getElementById("alamat").value;
+let produk=document.getElementById("produk").options[
+document.getElementById("produk").selectedIndex].text;
+
 let text=encodeURIComponent(
 "Halo Admin, saya "+nama+
-" dari "+kota+
-".\n\nTertarik franchise.\n\nPertanyaan saya:\n"+pesan
+"\nKota: "+kota+
+"\n\nPesan:\n"+produk+
+"\nJumlah: "+jumlah+
+"\nGratis: "+gratis+
+"\nOngkir: Rp "+ongkir.toLocaleString()+
+"\nTotal: Rp "+total.toLocaleString()+
+"\nMetode: "+metode+
+"\nStatus: "+status+
+(metode=="COD" ? "\nAlamat:\n"+alamat : "")
 );
-window.open("https://wa.me/6287743228938?text="+text,"_blank");
-},3000);
 
-},1500);
+window.open("https://wa.me/6287743228938?text="+text,"_blank");
 
 }
 
