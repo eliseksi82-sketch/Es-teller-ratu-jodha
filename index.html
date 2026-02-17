@@ -3,259 +3,243 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Es Teller Ratu Jodha - Cinematic Animated</title>
+<title>FRANCHISE NASIONAL ULTIMATE | ES TELER CREAMY RATU JODHA SHINTA</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
-/* BACKGROUND CINEMATIC */
 body{
-background:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836') no-repeat center center/cover;
+font-family:'Poppins',sans-serif;
 color:#fff;
-position:relative;
-min-height:100vh;
+background:black;
 overflow-x:hidden;
 }
 
-body::before{
-content:'';
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:linear-gradient(rgba(0,0,0,0.85),rgba(0,0,0,0.75));
-z-index:0;
+/* VIDEO BACKGROUND */
+.video-bg{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+object-fit:cover;
+z-index:-2;
 }
 
-/* ANIMATION */
-@keyframes fadeUp{
-0%{opacity:0;transform:translateY(40px);}
-100%{opacity:1;transform:translateY(0);}
+.overlay{
+position:fixed;
+width:100%;height:100%;
+background:linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.95));
+z-index:-1;
 }
 
-@keyframes glowText{
-0%{text-shadow:0 0 5px rgba(0,234,255,0.3);}
-50%{text-shadow:0 0 25px rgba(0,234,255,1);}
-100%{text-shadow:0 0 5px rgba(0,234,255,0.3);}
+/* GOLD TEXT */
+.gold{
+font-family:'Playfair Display',serif;
+background:linear-gradient(90deg,#FFD700,#fff8dc,#FFD700);
+background-size:400%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:shimmer 6s linear infinite;
 }
 
-.animate{
-opacity:0;
-animation:fadeUp 1s ease forwards;
+@keyframes shimmer{
+0%{background-position:-500px 0;}
+100%{background-position:500px 0;}
 }
 
-.delay1{animation-delay:0.3s;}
-.delay2{animation-delay:0.6s;}
-.delay3{animation-delay:0.9s;}
-.delay4{animation-delay:1.2s;}
-.delay5{animation-delay:1.5s;}
-
-.glow{
-animation:glowText 2.5s infinite;
-}
-
-/* HEADER */
-header{
-position:relative;
-z-index:2;
-background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);
-padding:70px 20px;
-text-align:center;
-box-shadow:0 5px 30px rgba(0,0,0,0.6);
-}
-
-header h1{
-font-size:34px;
-letter-spacing:1px;
-}
-
-header p{
-margin-top:10px;
-opacity:0.8;
-}
-
-/* CONTAINER */
-.container{
-position:relative;
-z-index:2;
-padding:20px;
-max-width:600px;
+/* SECTION */
+.section{
+max-width:1000px;
 margin:auto;
+padding:80px 20px;
+text-align:center;
 }
 
-/* CARD */
+/* HERO */
+.hero h1{
+font-size:48px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:18px;
+opacity:0.85;
+}
+
+/* PACKAGE CARD */
+.packages{
+display:flex;
+flex-wrap:wrap;
+gap:30px;
+justify-content:center;
+margin-top:50px;
+}
+
 .card{
-background:rgba(255,255,255,0.08);
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,215,0,0.6);
+border-radius:30px;
+padding:40px;
+width:300px;
 backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,0.2);
-border-radius:25px;
-box-shadow:0 20px 40px rgba(0,0,0,0.6);
-overflow:hidden;
-margin-top:-50px;
 transition:0.4s;
 }
 
 .card:hover{
-transform:translateY(-10px);
+transform:translateY(-12px);
+box-shadow:0 0 40px gold;
 }
 
-.card img{
-width:100%;
-height:280px;
-object-fit:cover;
-}
-
-.card-content{
-padding:25px;
-text-align:center;
+.card h3{
+font-family:'Playfair Display',serif;
+color:#FFD700;
+margin-bottom:15px;
 }
 
 .price{
 font-size:22px;
-color:#00eaff;
-font-weight:700;
+color:#FFD700;
 margin:10px 0;
 }
 
 /* BUTTON */
 .btn{
 display:inline-block;
-padding:14px 35px;
-background:linear-gradient(90deg,#00c6ff,#0072ff);
-color:white;
+padding:15px 40px;
+background:linear-gradient(90deg,#FFD700,#C9A227);
+color:black;
 text-decoration:none;
 border-radius:50px;
-margin-top:15px;
+margin-top:20px;
+font-weight:bold;
 transition:0.3s;
-font-weight:600;
-box-shadow:0 0 20px rgba(0,198,255,0.6);
 }
 
 .btn:hover{
 transform:scale(1.1);
-box-shadow:0 0 40px rgba(0,198,255,1);
+box-shadow:0 0 35px gold;
 }
 
-/* VIDEO */
-.video-section{
-margin-top:40px;
-text-align:center;
+/* FORM */
+.form-section{
+margin-top:80px;
+padding:50px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,215,0,0.6);
+border-radius:30px;
 }
 
-video{
+.form-section input{
 width:100%;
-border-radius:20px;
-margin-top:15px;
-box-shadow:0 10px 30px rgba(0,0,0,0.7);
-}
-
-/* PAYMENT */
-.payment{
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,0.2);
-padding:25px;
-border-radius:20px;
-margin-top:30px;
-text-align:center;
-box-shadow:0 10px 25px rgba(0,0,0,0.5);
+padding:15px;
+margin:12px 0;
+border-radius:15px;
+border:none;
+outline:none;
 }
 
 /* FOOTER */
 footer{
-position:relative;
-z-index:2;
 text-align:center;
-padding:25px;
-margin-top:50px;
-background:rgba(0,0,0,0.7);
-font-size:14px;
+padding:40px;
+border-top:1px solid rgba(255,215,0,0.5);
+margin-top:100px;
 }
 
-/* FLOAT WA */
-.floating-wa{
-position:fixed;
-bottom:20px;
-right:20px;
-background:linear-gradient(90deg,#25D366,#128C7E);
-color:white;
-padding:15px 25px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-box-shadow:0 0 25px rgba(37,211,102,0.8);
-transition:0.3s;
-z-index:3;
-}
-
-.floating-wa:hover{
-transform:scale(1.15);
-box-shadow:0 0 50px rgba(37,211,102,1);
+/* RESPONSIVE */
+@media(max-width:768px){
+.packages{flex-direction:column;align-items:center;}
+.hero h1{font-size:34px;}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<h1 class="animate glow">🍧 Es Teller Creamy Ratu Jodha</h1>
-<p class="animate delay1">Segar • Creamy • Nikmat • Bikin Nagih</p>
-</header>
+<video autoplay muted loop playsinline class="video-bg">
+<source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
 
-<div class="container">
-
-<div class="card animate delay2">
-<img src="https://images.unsplash.com/photo-1598514982842-3d6f7f5d4e5c" alt="Es Teller di Cup">
-
-<div class="card-content">
-<h2 class="animate delay3">Es Teller Creamy Spesial</h2>
-
-<p class="animate delay4">
-Perpaduan 🥑 alpukat segar, jelly, nangka, durian, susu creamy dengan sensasi dingin menyegarkan.
+<section class="section hero">
+<h1 class="gold">
+👑 FRANCHISE NASIONAL ULTIMATE 👑
+</h1>
+<h2 class="gold" style="font-size:28px;margin-top:15px;">
+ES TELER CREAMY RATU JODHA SHINTA
+</h2>
+<p style="margin-top:25px;">
+Bangun Bisnis Minuman Premium Bersama Brand Royal Empire  
+Dengan Sistem Teruji & Dukungan Nasional
 </p>
 
-<p class="price animate delay4">Cup Reguler Rp 5.000</p>
-<p class="price animate delay5">Cup Jumbo Rp 8.000</p>
+<a class="btn" href="#daftar">Gabung Sekarang</a>
+</section>
 
-<a class="btn animate delay5" href="https://wa.me/6287743228938?text=Halo%20saya%20mau%20pesan%20Es%20Teller%20Ratu%20Jodha">
-Pesan Sekarang
+<section class="section">
+<h2 class="gold">💎 Paket Kemitraan Franchise 💎</h2>
+
+<div class="packages">
+
+<div class="card">
+<h3>PAKET SILVER</h3>
+<p class="price">Investasi 3 Juta</p>
+<p>✔ Booth Standard<br>
+✔ Bahan Awal 100 Cup<br>
+✔ Banner & Branding<br>
+✔ Training Online</p>
+</div>
+
+<div class="card">
+<h3>PAKET GOLD</h3>
+<p class="price">Investasi 6 Juta</p>
+<p>✔ Booth Premium<br>
+✔ Bahan Awal 250 Cup<br>
+✔ Free Marketing Kit<br>
+✔ Training + Support</p>
+</div>
+
+<div class="card">
+<h3>PAKET ROYAL</h3>
+<p class="price">Investasi 10 Juta</p>
+<p>✔ Booth Luxury Custom<br>
+✔ Bahan Awal 500 Cup<br>
+✔ Full Branding Nasional<br>
+✔ Prioritas Wilayah</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<h2 class="gold">📊 Estimasi Potensi Keuntungan</h2>
+<p style="margin-top:20px;">
+Penjualan rata-rata 80 cup/hari x Rp5.000  
+= Rp400.000/hari  
+= ± Rp12.000.000/bulan  
+(Estimasi tergantung lokasi & strategi marketing)
+</p>
+</section>
+
+<section id="daftar" class="section form-section">
+<h2 class="gold">📝 Daftar Franchise Sekarang</h2>
+
+<input type="text" placeholder="Nama Lengkap">
+<input type="text" placeholder="Nomor WhatsApp">
+<input type="text" placeholder="Kota / Provinsi">
+<input type="text" placeholder="Pilih Paket (Silver/Gold/Royal)">
+
+<a class="btn" href="https://wa.me/6287743228938?text=Saya%20ingin%20daftar%20Franchise%20Nasional%20Ultimate">
+Kirim Pendaftaran
 </a>
-</div>
-</div>
+</section>
 
-<div class="video-section">
-<h3 class="animate delay3" style="margin-top:40px;">🎬 Video Special Ratu Jodha</h3>
-
-<video autoplay muted loop playsinline class="animate delay4">
-<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-Browser kamu tidak mendukung video.
-</video>
-
-<div class="payment animate delay5">
-<h3 class="glow">💳 Metode Pembayaran</h3>
-<p>✔ Transfer Bank</p>
-<p>✔ QRIS</p>
-<p>✔ Bayar via DO</p>
-<p>✔ Delivery Order</p>
-<p><b>WA:</b> 087743228938</p>
-</div>
-</div>
-
-<footer class="animate delay5">
-© 2026 Es Teller Ratu Jodha | Fresh Every Day 💙
+<footer>
+© 2026 ROYAL EMPIRE  
+ES TELER CREAMY RATU JODHA SHINTA  
+National Brand • Premium System • Royal Standard
 </footer>
-
-<a class="floating-wa" href="https://wa.me/6287743228938?text=Halo%20saya%20ingin%20pesan%20Es%20Teller">
-Chat WA
-</a>
 
 </body>
   </html>
