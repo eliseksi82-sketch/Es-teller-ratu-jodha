@@ -226,228 +226,180 @@ Chat WA
 
 </body>
 </html>
-<!-- ===== CARTOON FRUIT BATTLE ===== -->
+<!-- ===== SUPER EPIC FRUIT BATTLE ===== -->
 <style>
-.cartoon-arena{
+.epic-arena{
 position:relative;
-height:450px;
+height:360px;
 margin-top:40px;
-border-radius:30px;
+border-radius:25px;
 overflow:hidden;
-background:linear-gradient(to top,#ffecd2,#fcb69f);
+background:radial-gradient(circle at center,#ff9a9e,#fad0c4,#fad0c4);
 box-shadow:0 20px 50px rgba(0,0,0,0.4);
-text-align:center;
 }
 
 .arena-title{
+text-align:center;
+padding-top:10px;
 font-weight:bold;
-font-size:22px;
-padding:15px;
-color:#ff4081;
+color:#7a1f00;
 }
 
-.character{
+.fruit{
+position:absolute;
+font-size:70px;
+transition:all 0.5s ease;
+}
+
+#alpukat{ left:20px; top:150px; }
+#durian{ right:20px; top:150px; }
+#nangka{ left:50%; transform:translateX(-50%); bottom:40px; }
+
+.health{
 position:absolute;
 width:120px;
-height:120px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:50px;
-cursor:pointer;
-transition:0.3s;
-}
-
-.character .eyes{
-position:absolute;
-top:35px;
-display:flex;
-gap:15px;
-}
-
-.eye{
-width:12px;
-height:18px;
-background:black;
-border-radius:50%;
-animation:blink 4s infinite;
-}
-
-@keyframes blink{
-0%,95%,100%{height:18px;}
-97%{height:2px;}
-}
-
-.hand{
-position:absolute;
-width:25px;
-height:10px;
-background:#333;
-border-radius:10px;
-top:60px;
-}
-
-.left-hand{ left:-20px; }
-.right-hand{ right:-20px; }
-
-@keyframes wiggle{
-0%{transform:rotate(0deg);}
-50%{transform:rotate(30deg);}
-100%{transform:rotate(0deg);}
-}
-
-.character:hover .hand{
-animation:wiggle 0.5s infinite;
-}
-
-#alpukat{
-left:40px;
-top:220px;
-background:#66bb6a;
-}
-
-#durian{
-right:40px;
-top:220px;
-background:#ffeb3b;
-}
-
-#nangka{
-left:50%;
-transform:translateX(-50%);
-top:80px;
-background:#ffa726;
-}
-
-.hp{
-position:absolute;
-width:120px;
-height:10px;
+height:12px;
 background:#ddd;
 border-radius:10px;
 overflow:hidden;
 }
 
-.bar{
+.health-bar{
 height:100%;
-background:linear-gradient(90deg,#00e676,#ffea00,#ff1744);
+background:linear-gradient(90deg,#00c853,#ffeb3b,#ff1744);
 width:100%;
 transition:0.3s;
 }
 
-#hpA{ left:40px; top:190px; }
-#hpD{ right:40px; top:190px; }
-#hpN{ left:50%; transform:translateX(-50%); top:50px; }
+#healthA{ left:20px; top:120px; }
+#healthD{ right:20px; top:120px; }
+#healthN{ left:50%; transform:translateX(-50%); bottom:20px; }
 
-.star{
+.explosion{
 position:absolute;
-font-size:40px;
+font-size:60px;
 opacity:0;
-transition:0.3s;
 }
 
 .winner{
 position:absolute;
 width:100%;
+text-align:center;
 top:40%;
-font-size:30px;
+font-size:28px;
 font-weight:bold;
-color:#ff4081;
+color:#7a1f00;
 display:none;
-animation:bounce 0.8s infinite alternate;
 }
 
-@keyframes bounce{
-from{transform:translateY(0);}
-to{transform:translateY(-15px);}
+.auto-btn{
+position:absolute;
+top:10px;
+right:10px;
+padding:8px 15px;
+border:none;
+border-radius:20px;
+background:#7a1f00;
+color:white;
+cursor:pointer;
+}
+
+.shake{
+animation:shake 0.3s;
+}
+
+@keyframes shake{
+0%{transform:translate(0)}
+25%{transform:translate(5px,-5px)}
+50%{transform:translate(-5px,5px)}
+75%{transform:translate(5px,5px)}
+100%{transform:translate(0)}
 }
 </style>
 
-<div class="cartoon-arena">
-<div class="arena-title">🍭 CARTOON FRUIT BATTLE 🍭</div>
+<div class="epic-arena" id="arena">
+<div class="arena-title">🏟️ SUPER EPIC FRUIT GLADIATOR</div>
+<button class="auto-btn" onclick="startBattle()">AUTO BATTLE</button>
 
-<div class="hp" id="hpA"><div class="bar" id="barA"></div></div>
-<div class="hp" id="hpD"><div class="bar" id="barD"></div></div>
-<div class="hp" id="hpN"><div class="bar" id="barN"></div></div>
+<div class="health" id="healthA"><div class="health-bar" id="barA"></div></div>
+<div class="health" id="healthD"><div class="health-bar" id="barD"></div></div>
+<div class="health" id="healthN"><div class="health-bar" id="barN"></div></div>
 
-<div class="character" id="alpukat" onclick="attack('alpukat')">
-🥑
-<div class="eyes"><div class="eye"></div><div class="eye"></div></div>
-<div class="hand left-hand"></div>
-<div class="hand right-hand"></div>
-</div>
+<div class="fruit" id="alpukat">🥑</div>
+<div class="fruit" id="durian">🥥</div>
+<div class="fruit" id="nangka">🍈</div>
 
-<div class="character" id="durian" onclick="attack('durian')">
-🥥
-<div class="eyes"><div class="eye"></div><div class="eye"></div></div>
-<div class="hand left-hand"></div>
-<div class="hand right-hand"></div>
-</div>
-
-<div class="character" id="nangka" onclick="attack('nangka')">
-🍈
-<div class="eyes"><div class="eye"></div><div class="eye"></div></div>
-<div class="hand left-hand"></div>
-<div class="hand right-hand"></div>
-</div>
-
-<div class="star" id="star">✨</div>
+<div class="explosion" id="boom">💥</div>
 <div class="winner" id="winnerText"></div>
 
-<audio id="popSound">
-<source src="https://www.soundjay.com/button/sounds/button-16.mp3" type="audio/mpeg">
+<audio id="sound">
+<source src="https://www.soundjay.com/explosion/sounds/explosion-01.mp3" type="audio/mpeg">
 </audio>
 </div>
 
 <script>
-let hp={alpukat:100,durian:100,nangka:100};
+let hp = {
+alpukat:100,
+durian:100,
+nangka:100
+};
 
-const barA=document.getElementById("barA");
-const barD=document.getElementById("barD");
-const barN=document.getElementById("barN");
-const star=document.getElementById("star");
-const winnerText=document.getElementById("winnerText");
-const popSound=document.getElementById("popSound");
+const barA = document.getElementById("barA");
+const barD = document.getElementById("barD");
+const barN = document.getElementById("barN");
+const boom = document.getElementById("boom");
+const arena = document.getElementById("arena");
+const winnerText = document.getElementById("winnerText");
+const sound = document.getElementById("sound");
 
-function updateBar(){
-barA.style.width=hp.alpukat+"%";
-barD.style.width=hp.durian+"%";
-barN.style.width=hp.nangka+"%";
+function updateHP(){
+barA.style.width = hp.alpukat + "%";
+barD.style.width = hp.durian + "%";
+barN.style.width = hp.nangka + "%";
 }
 
-function attack(attacker){
-if(hp[attacker]<=0) return;
+function randomHit(){
+let fruits = ["alpukat","durian","nangka"];
+let attacker = fruits[Math.floor(Math.random()*3)];
+let target = fruits[Math.floor(Math.random()*3)];
 
-let targets=Object.keys(hp).filter(f=>f!==attacker && hp[f]>0);
-if(targets.length===0) return;
+if(attacker === target) return;
 
-let target=targets[Math.floor(Math.random()*targets.length)];
-let damage=Math.floor(Math.random()*20)+5;
+let damage = Math.floor(Math.random()*20)+5;
+hp[target] -= damage;
+if(hp[target] < 0) hp[target]=0;
 
-hp[target]-=damage;
-if(hp[target]<0) hp[target]=0;
+boom.style.left = Math.random()*250 + "px";
+boom.style.top = Math.random()*200 + "px";
+boom.style.opacity = 1;
+sound.currentTime=0;
+sound.play();
 
-star.style.left=Math.random()*300+"px";
-star.style.top=Math.random()*250+"px";
-star.style.opacity=1;
+arena.classList.add("shake");
+setTimeout(()=>{
+boom.style.opacity = 0;
+arena.classList.remove("shake");
+},300);
 
-popSound.currentTime=0;
-popSound.play();
-
-setTimeout(()=>{star.style.opacity=0;},300);
-
-updateBar();
+updateHP();
 checkWinner();
 }
 
 function checkWinner(){
-let alive=Object.keys(hp).filter(f=>hp[f]>0);
-if(alive.length===1){
+let alive = Object.entries(hp).filter(f=>f[1]>0);
+if(alive.length === 1){
 winnerText.style.display="block";
-winnerText.innerHTML="🏆 "+alive[0].toUpperCase()+" MENANG!";
+winnerText.innerHTML="🏆 JUARA HARI INI: " + alive[0][0].toUpperCase();
+clearInterval(battleInterval);
 }
 }
 
-updateBar();
+let battleInterval;
+
+function startBattle(){
+winnerText.style.display="none";
+hp={alpukat:100,durian:100,nangka:100};
+updateHP();
+battleInterval = setInterval(randomHit,800);
+}
   </script>
