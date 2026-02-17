@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Es Teller Ratu Jodha</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -16,213 +15,243 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:linear-gradient(to bottom,#dff6ff,#ffffff);
-color:#333;
+background:#f5f5f5;
+padding-bottom:120px;
 }
 
-/* HEADER */
-header{
-background:linear-gradient(90deg,#00b4db,#0083b0);
+/* TOPBAR */
+.topbar{
+background:#ee4d2d;
 color:white;
-padding:60px 20px;
-text-align:center;
-box-shadow:0 5px 20px rgba(0,0,0,0.2);
+padding:12px;
+display:flex;
+align-items:center;
+gap:10px;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
-header h1{
-font-size:32px;
-}
-
-header p{
-margin-top:10px;
-font-weight:300;
+.topbar input{
+flex:1;
+padding:7px 12px;
+border-radius:20px;
+border:none;
+outline:none;
+font-size:12px;
 }
 
 /* CONTAINER */
 .container{
-padding:20px;
-max-width:600px;
+max-width:500px;
 margin:auto;
 }
 
-/* CARD */
-.card{
-background:white;
-border-radius:25px;
-box-shadow:0 15px 35px rgba(0,0,0,0.15);
-overflow:hidden;
-margin-top:-40px;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-.card img{
+/* PRODUCT */
+.product img{
 width:100%;
-height:280px;
+height:300px;
 object-fit:cover;
 }
 
-.card-content{
-padding:25px;
-text-align:center;
+.product-info{
+background:white;
+padding:15px;
+}
+
+.badge{
+background:#ffebe8;
+color:#ee4d2d;
+font-size:11px;
+padding:4px 8px;
+border-radius:5px;
+display:inline-block;
+margin-bottom:8px;
+font-weight:600;
+}
+
+.title{
+font-weight:600;
+font-size:16px;
+margin-bottom:6px;
 }
 
 .price{
+color:#ee4d2d;
 font-size:22px;
-color:#0083b0;
 font-weight:700;
-margin:10px 0;
 }
 
-.btn{
-display:inline-block;
-padding:14px 30px;
-background:linear-gradient(90deg,#00b4db,#0083b0);
-color:white;
-text-decoration:none;
-border-radius:50px;
-margin-top:10px;
-transition:0.3s;
-font-weight:500;
+.old-price{
+font-size:12px;
+color:#999;
+text-decoration:line-through;
+margin-left:8px;
 }
 
-.btn:hover{
-opacity:0.8;
+.rating{
+font-size:12px;
+margin-top:5px;
+color:#f4b400;
 }
 
-/* GALLERY */
-.gallery{
-margin-top:30px;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
+/* VARIANT */
+.variant{
+background:white;
+margin-top:8px;
+padding:15px;
 }
 
-.gallery img{
-width:100%;
-height:100px;
-object-fit:cover;
-border-radius:15px;
-transition:0.3s;
+.variant button{
+padding:8px 15px;
+border:1px solid #ddd;
+border-radius:8px;
+background:white;
+margin-right:10px;
 cursor:pointer;
 }
 
-.gallery img:hover{
-transform:scale(1.05);
+.variant button.active{
+border:1px solid #ee4d2d;
+color:#ee4d2d;
 }
 
-/* VIDEO */
-.video-section{
-margin-top:30px;
-text-align:center;
+/* DESCRIPTION */
+.section{
+background:white;
+margin-top:8px;
+padding:15px;
+font-size:13px;
 }
 
-video{
-width:100%;
-border-radius:20px;
-margin-top:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* PAYMENT */
-.payment{
-background:#e0f7ff;
-padding:25px;
-border-radius:20px;
-margin-top:30px;
-text-align:center;
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
-}
-
-.payment h3{
-margin-bottom:15px;
-color:#0083b0;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-padding:25px;
-margin-top:40px;
-background:#0083b0;
-color:white;
-font-size:14px;
-}
-
-/* Floating WhatsApp */
-.floating-wa{
+/* BOTTOM ACTION */
+.bottom-action{
 position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:15px 20px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-box-shadow:0 5px 15px rgba(0,0,0,0.3);
-transition:0.3s;
+bottom:60px;
+left:0;
+right:0;
+background:white;
+display:flex;
+gap:10px;
+padding:10px;
+box-shadow:0 -5px 15px rgba(0,0,0,0.1);
+max-width:500px;
+margin:auto;
 }
 
-.floating-wa:hover{
-transform:scale(1.1);
+.cart-btn{
+flex:1;
+border:1px solid #ee4d2d;
+color:#ee4d2d;
+padding:12px;
+border-radius:8px;
+text-align:center;
+font-weight:600;
+cursor:pointer;
+}
+
+.buy-btn{
+flex:1;
+background:#ee4d2d;
+color:white;
+padding:12px;
+border-radius:8px;
+text-align:center;
+font-weight:600;
+text-decoration:none;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:60px;
+background:white;
+display:flex;
+justify-content:space-around;
+align-items:center;
+box-shadow:0 -5px 15px rgba(0,0,0,0.1);
+font-size:12px;
+}
+
+.bottom-nav div{
+text-align:center;
+color:#777;
+}
+
+.bottom-nav div.active{
+color:#ee4d2d;
+font-weight:600;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>🍧 Es Teller Creamy Ratu Jodha</h1>
-<p>Segar • Creamy • Nikmat • Bikin Nagih</p>
-</header>
+<div class="topbar">
+<span>←</span>
+<input type="text" placeholder="Cari di toko ini">
+<span>🛒</span>
+</div>
 
 <div class="container">
 
-<div class="card">
-<!-- GANTI GAMBAR ES DI CUP -->
-<img src="https://images.unsplash.com/photo-1598514982842-3d6f7f5d4e5c" alt="Es Teller di Cup">
+<div class="product">
+<img src="https://images.unsplash.com/photo-1598514982842-3d6f7f5d4e5c">
+</div>
 
-<div class="card-content">
-<h2>Es Teller Creamy Spesial</h2>
-<p>Perpaduan 🥑 alpukat segar, jelly, nangka, durian, susu creamy dengan sensasi dingin menyegarkan.</p>
-<p class="price">Cup Reguler Rp 5.000</p>
-<p class="price">Cup Jumbo Rp 8.000</p>
+<div class="product-info">
+<div class="badge">DISKON 50%</div>
+<div class="title">Es Teller Creamy Spesial Ratu Jodha</div>
+<div>
+<span class="price">Rp5.000 - Rp8.000</span>
+<span class="old-price">Rp10.000</span>
+</div>
+<div class="rating">⭐⭐⭐⭐⭐ 4.9 | 1.2RB Terjual</div>
+</div>
 
-<a class="btn" href="https://wa.me/6287743228938?text=Halo%20saya%20mau%20pesan%20Es%20Teller%20Ratu%20Jodha">
-Pesan Sekarang
+<div class="variant">
+<strong>Pilih Varian:</strong><br><br>
+<button class="active">Reguler - Rp5.000</button>
+<button>Jumbo - Rp8.000</button>
+</div>
+
+<div class="section">
+<strong>Deskripsi Produk</strong><br><br>
+🥑 Alpukat segar<br>
+🍈 Nangka & Jelly<br>
+🥥 Durian lembut<br>
+🥛 Susu creamy premium<br><br>
+Segar banget cocok untuk cuaca panas ☀️
+</div>
+
+</div>
+
+<!-- Bottom Action -->
+<div class="bottom-action">
+<div class="cart-btn">+ Keranjang</div>
+<a href="https://wa.me/6287743228938?text=Halo%20saya%20mau%20pesan%20Es%20Teller%20Ratu%20Jodha" class="buy-btn">
+Beli Sekarang
 </a>
 </div>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+<div class="active">
+🏠<br>Beranda
 </div>
-
-<div class="video-section">
-<h3>🎬 Video Special Ratu Jodha</h3>
-
-<video autoplay muted loop playsinline>
-<source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-Browser kamu tidak mendukung video.
-</video>
-
-<div class="payment">
-<h3>💳 Metode Pembayaran</h3>
-<p>✔ Transfer Bank</p>
-<p>✔ QRIS</p>
-<p>✔ Bayar via DO</p>
-<p>✔ Delivery Order</p>
-<p><b>WA:</b> 087743228938</p>
+<div>
+🛒<br>Keranjang
+</div>
+<div>
+🔔<br>Notifikasi
+</div>
+<div>
+👤<br>Akun
 </div>
 </div>
-
-<footer>
-© 2026 Es Teller Ratu Jodha | Fresh Every Day 💙
-</footer>
-
-<a class="floating-wa" href="https://wa.me/6287743228938?text=Halo%20saya%20ingin%20pesan%20Es%20Teller">
-Chat WA
-</a>
 
 </body>
-</html>
+  </html>
